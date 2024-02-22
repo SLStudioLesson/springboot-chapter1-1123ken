@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Detail</title>
+    <style>
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Schedule Detail</h2>
+    <div th:if="${schedule != null}">
+        <p>ID: <span th:text="${schedule.id}"></span></p>
+        <p>Name: <span th:text="${#strings.toUpperCase(schedule.name)}"></span></p>
+        <p>Start Date Time: <span th:text="${#temporals.format(schedule.startDateTime, 'yyyy/MM/dd HH:mm')}"></span></p>
+        <p th:if="${schedule.duration > 5}" style="color:red;">Duration: <span th:text="${schedule.duration}"></span></p>
+        <p th:if="${schedule.duration <= 5}" style="color:blue;">Duration: <span th:text="${schedule.duration}"></span></p>
+        <p>Location: <span th:text="${schedule.location}"></span></p>
+    </div>
+    <div th:if="${schedule == null}">
+        <p>Schedule not found.</p>
+    </div>
+</body>
+
+</html>

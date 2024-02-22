@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #797979;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Search Result</h1>
+    <div th:if="${schedules.isEmpty()}">
+        <p>No schedules found.</p>
+    </div>
+    <div th:unless="${schedules.isEmpty()}">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Start Date Time</th>
+                    <th>Duration</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="schedule : ${schedules}">
+                    <td th:text="${schedule.id}">ID</td>
+                    <td th:text="${schedule.name}">Name</td>
+                    <td th:text="${#temporals.format(schedule.startDateTime, 'yyyy-MM-dd HH:mm')}">Date Time</td>
+                    <td th:text="${schedule.duration}">Duration</td>
+                    <td th:text="${schedule.location}">Place</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

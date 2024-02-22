@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Register</title>
+    <style>
+        form {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="datetime-local"] {
+            padding: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Schedule Register</h2>
+    <form th:action="@{/question2/add}" th:method="post" th:object="${scheduleForm}">
+        <div>
+            <label for="id">ID:</label>
+            <input type="number" id="id" th:field="*{id}" required>
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+        </div>
+        <div>
+            <label for="startDateTime">Start Date Time:</label>
+            <input type="datetime-local" id="startDateTime" th:field="*{startDateTime}" required>
+        </div>
+        <div>
+            <label for="duration">Duration:</label>
+            <input type="number" step="0.5" id="duration" th:field="*{duration}" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" th:field="*{location}" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Index</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #797979;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Schedule Index</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Start Date Time</th>
+                <th>Duration</th>
+                <th>Location</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="schedule : ${schedules}">
+                <td th:text="${schedule.id}">ID</td>
+                <td th:text="${schedule.name}">Name</td>
+                <td th:text="${#temporals.format(schedule.startDateTime, 'yyyy-MM-dd HH:mm')}">Date Time</td>
+                <td th:text="${schedule.duration}">Duration</td>
+                <td th:text="${schedule.location}">Place</td>
+                <td><a th:href="@{/question2/detail/{id}(id=${schedule.id})}"><button>detail</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <h3>Total Duration: <span th:text="${#aggregates.sum(schedules.![duration])}">Total Duration</span></h3>
+        <h3>Average Duration: <span th:text="${#aggregates.avg(schedules.![duration])}">Average Duration</span></h3>
+    </div>
+    <br>
+    <h2>Search</h2>
+    <form action="/question2/search" method="get">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location">
+        <button type="submit">search</button>
+    </form>
+    <br>
+    <h2><a th:href="@{/question2/register}">Click here to register</a></h2>
+</body>
+
+</html>
