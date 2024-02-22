@@ -12,7 +12,8 @@
 
 `http://localhost:8080/question1` へアクセスし、以下の画像の通りの表示となることを確認してください。
 
-画像1
+![springboot_chapter01test_01](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/b1fb7219-c3b3-4a31-8e41-9f88b44c7acb)
+
 
 
 
@@ -46,7 +47,7 @@
 
 `http://localhost:8080/question2/index` へアクセスし、以下の画像の通りの出力となることを確認してください。
 
-画像2
+![スクリーンショット 2024-02-20 134542](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/ff212af8-338e-449c-af56-18aa50ed7990)
 
 
 
@@ -62,11 +63,11 @@
 
 ID:1の **「detail」** ボタンを押下し、`http://localhost:8080/question2/detail/1` へアクセスした時に以下の画像の通りの表示となることを確認してください。
 
-画像3
+![スクリーンショット 2024-02-15 105335](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/4a46c997-4bde-452b-b0e3-c263a0a2b4c1)
 
 ↓
 
-画像4
+![スクリーンショット 2024-02-10 135033](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/fa098452-266e-4496-b544-b149b4091c22)
 
 
 
@@ -86,11 +87,12 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 以下画像通りのの入力後 **「search」** ボタンを押下し、`http://localhost:8080/question2/search?name=Dinner&location=Kichijoji` へアクセスした時に以下の画像の通りの表示となることを確認してください。
 
-画像5
+![スクリーンショット 2024-02-10 141318](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/499a98c8-5387-46b0-a441-a1784654f2a3)
 
 ↓
 
-画像6
+![スクリーンショット 2024-02-20 140602](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/73151880-26f0-47de-a809-09a26ab8e22a)
+
 
 
 
@@ -109,7 +111,8 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 **「Click here to register」** リンクをクリック し、 `http://localhost:8080/question2/register` へアクセスした時に以下の画像の通りの表示となることを確認してください。
 
-画像7
+![スクリーンショット 2024-02-10 142854](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/9ef16dab-13b1-48dc-b64d-71011b8ae05e)
+
 
 
 
@@ -131,5 +134,6 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 また登録成功後、画面下部にあるリンクから一覧画面に戻り、項目を入力したスケジュールがテーブルに正常に追加されていることを確認してください。
 
-画像8
+![スクリーンショット 2024-02-10 143907](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/772cfd53-e373-45fb-acbe-2bec4e872d1d)
+
 
