@@ -22,5 +22,16 @@ dependencies {
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+
+    useJUnitPlatform()
+
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat 'full'
+        events 'started', 'skipped', 'passed', 'failed'
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
