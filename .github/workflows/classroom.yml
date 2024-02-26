@@ -16,8 +16,8 @@ jobs:
     if: github.actor != 'github-classroom[bot]'
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
       - uses: education/autograding@v1
-      with:
-        distribution: 'temurin' # See 'Supported distributions' for available options
-        java-version: '21'
-
