@@ -1,35 +1,35 @@
 ## 試験を始める前に必ずやること!!
 以下の手順に沿って操作を行ってください。
-1. VSCodeでプロジェクトの中の `.github/workflows/classroom.yml`というファイルを開く
+1. VSCodeで、プロジェクト直下にある`.github`フォルダの中の `/workflows/classroom.yml`というファイルを開く
 2. 1で開いたファイルの中身を以下の内容に丸ごと書き換える
-    ※ミスしないように必ず**コピペ**で書き換えること
-    ```yml
-    name: GitHub Classroom Workflow
+   1. ミスしないように必ず**コピペ**で書き換えること
+```yml
+name: GitHub Classroom Workflow
 
-    on:
-      - push
-      - workflow_dispatch
+on:
+  - push
+  - workflow_dispatch
 
-    permissions:
-      checks: write
-      actions: read
-      contents: read
+permissions:
+  checks: write
+  actions: read
+  contents: read
 
-    jobs:
-      build:
-        name: Autograding
-        runs-on: ubuntu-latest
-        if: github.actor != 'github-classroom[bot]'
-        steps:
-          - uses: actions/checkout@v4
-          - uses: actions/setup-java@v4
-            with:
-              distribution: 'temurin'
-              java-version: '21'
-          - uses: education/autograding@v1
-    ```
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: education/autograding@v1
+```
 3. 書き換えが完了したらこのファイルを閉じる
-   ※以降このファイルは絶対に操作しないこと（何か誤操作があるとソースコードが動かなくなります）
+   1. 以降このファイルは絶対に操作しないこと（何か誤操作があるとソースコードが動かなくなります）
 
 ## 問題1.
 
