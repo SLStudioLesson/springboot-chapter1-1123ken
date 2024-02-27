@@ -1,3 +1,36 @@
+## 試験を始める前に必ずやること!!
+以下の手順に沿って操作を行ってください。
+1. VSCodeでプロジェクトの中の `.github/workflows/classroom.yml`というファイルを開く
+2. 1で開いたファイルの中身を以下の内容に丸ごと書き換える
+    ※ミスしないように必ず**コピペ**で書き換えること
+    ```yml
+    name: GitHub Classroom Workflow
+
+    on:
+        - push
+        - workflow_dispatch
+
+    permissions:
+        checks: write
+        actions: read
+        contents: read
+
+    jobs:
+        build:
+            name: Autograding
+            runs-on: ubuntu-latest
+            if: github.actor != 'github-classroom[bot]'
+            steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-java@v4
+                    with:
+                        distribution: 'temurin'
+                        java-version: '21'
+                - uses: education/autograding@v1
+    ```
+3. 書き換えが完了したらこのファイルを閉じる
+   ※以降このファイルは絶対に操作しないこと（何か誤操作があるとソースコードが動かなくなります）
+
 ## 問題1.
 
 以下の要件に従って、特定の画面を表示する機能を持つハンドラメソッドを作成してください。
@@ -27,20 +60,20 @@
 
 `index.html` を改変してはいけません。
 
-1. 必要なクラスの修正: `com.example.chapter01test（プロジェクト名）` パッケージ内にある`Schedule`クラスを修正してください。  
-フィールド名や型は、`index.html`を参照して推測し、追加してください。  
+1. 必要なクラスの修正: `com.example.chapter01test（プロジェクト名）` パッケージ内にある`Schedule`クラスを修正してください。
+フィールド名や型は、`index.html`を参照して推測し、追加してください。
 コンストラクタ、アクセサも追加してください。
-2. フィールドの定義:`controller`パッケージ内の`ScheduleController.java` にて、フィールドとして `Schedule` インスタンスを格納するリスト `scheduleList` を定義してください。  
+2. フィールドの定義:`controller`パッケージ内の`ScheduleController.java` にて、フィールドとして `Schedule` インスタンスを格納するリスト `scheduleList` を定義してください。
 `scheduleList` の初期値には以下のインスタンスを格納してください。
-    
-    
+
+
     | ID | Name(タスク名) | StartDateTime(開始日時) | Duration(所要時間) | Location(場所) |
     | --- | --- | --- | --- | --- |
     | 1 | Lunch | 2019/01/22 12:00:00 | 1.0 | Shibuya |
     | 2 | Meeting | 2019/01/22 15:00:00 | 3.0 | Shinjuku |
     | 3 | Dinner | 2019/01/22 19:00:00 | 8.0 | Kichijoji |
-3. ハンドラメソッドの作成: `ScheduleController.java`にて、必要なハンドラメソッドを定義してください。  
-必要であれば、適切なアノテーションやその他記述を追加してください。  
+3. ハンドラメソッドの作成: `ScheduleController.java`にて、必要なハンドラメソッドを定義してください。
+必要であれば、適切なアノテーションやその他記述を追加してください。
 ビューに渡すデータとして、2.で定義した `scheduleList` を使用してください。
 
 ### 動作確認
