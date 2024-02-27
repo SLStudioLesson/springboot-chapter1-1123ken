@@ -7,26 +7,26 @@
     name: GitHub Classroom Workflow
 
     on:
-        - push
-        - workflow_dispatch
+      - push
+      - workflow_dispatch
 
     permissions:
-        checks: write
-        actions: read
-        contents: read
+      checks: write
+      actions: read
+      contents: read
 
     jobs:
-        build:
-            name: Autograding
-            runs-on: ubuntu-latest
-            if: github.actor != 'github-classroom[bot]'
-            steps:
-                - uses: actions/checkout@v4
-                - uses: actions/setup-java@v4
-                    with:
-                        distribution: 'temurin'
-                        java-version: '21'
-                - uses: education/autograding@v1
+      build:
+        name: Autograding
+        runs-on: ubuntu-latest
+        if: github.actor != 'github-classroom[bot]'
+        steps:
+          - uses: actions/checkout@v4
+          - uses: actions/setup-java@v4
+            with:
+              distribution: 'temurin'
+              java-version: '21'
+          - uses: education/autograding@v1
     ```
 3. 書き換えが完了したらこのファイルを閉じる
    ※以降このファイルは絶対に操作しないこと（何か誤操作があるとソースコードが動かなくなります）
