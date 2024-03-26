@@ -130,12 +130,13 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 ### 動作確認2
 
 ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?name=Lu`」** 入力後、以下の画像の通りの表示となることを確認してください。
+![スクリーンショット 2024-03-26 165508](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/105701916/fda1d35c-125c-430b-8c5a-deb61b76c29f)
 
 
 ### 動作確認3
 
 ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?location=Shi`」** 入力後、以下の画像の通りの表示となることを確認してください。
-
+![スクリーンショット 2024-03-26 173744](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/105701916/5da16779-54ca-4102-9905-c0aa8c44dcf6)
 
 
 
