@@ -63,8 +63,8 @@ jobs:
 1. 必要なクラスの修正: `com.example.chapter01test（プロジェクト名）` パッケージ内にある`Schedule`クラスを修正してください。
 フィールド名や型は、`index.html`を参照して推測し、追加してください。
 コンストラクタ、アクセサも追加してください。
-2. フィールドの定義:`controller`パッケージ内の`ScheduleController.java` にて、フィールドとして `Schedule` インスタンスを格納するリスト `scheduleList` を定義してください。
-`scheduleList` の初期値には以下のインスタンスを格納してください。
+2. フィールドの定義:`controller`パッケージ内の`ScheduleController.java` には、すでにフィールドとして `Schedule` インスタンスを格納する空のArrayList `scheduleList` が宣言されています。
+この`scheduleList` の初期値に、以下のインスタンスを格納するように修正してください。
 
 
     | ID | Name(タスク名) | StartDateTime(開始日時) | Duration(所要時間) | Location(場所) |
@@ -116,7 +116,7 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 `result.html` を改変してはいけません。
 
-### 動作確認
+### 動作確認1
 
 以下画像通りのの入力後 **「search」** ボタンを押下し、`http://localhost:8080/question2/search?name=Dinner&location=Kichijoji` へアクセスした時に以下の画像の通りの表示となることを確認してください。
 
@@ -125,6 +125,16 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 ↓
 
 ![スクリーンショット 2024-02-20 140602](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/73151880-26f0-47de-a809-09a26ab8e22a)
+
+
+### 動作確認2
+
+ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?name=Lu`」** 入力後、以下の画像の通りの表示となることを確認してください。
+
+
+### 動作確認3
+
+ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?location=Shi`」** 入力後、以下の画像の通りの表示となることを確認してください。
 
 
 
@@ -168,5 +178,4 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 また登録成功後、画面下部にあるリンクから一覧画面に戻り、項目を入力したスケジュールがテーブルに正常に追加されていることを確認してください。
 
 ![スクリーンショット 2024-02-10 143907](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/772cfd53-e373-45fb-acbe-2bec4e872d1d)
-
 

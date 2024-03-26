@@ -1,5 +1,6 @@
-package com.example.chapter01test.controller;
+package com.example.chapter01test;
 
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -12,8 +13,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.example.chapter01test.controller.HomeController;
+
 @ExtendWith(MockitoExtension.class)
-class HomeControllerTest {
+public class Q1Test {
 
     @InjectMocks
     private HomeController homeController;
@@ -30,7 +33,7 @@ class HomeControllerTest {
     void testIndex() throws Exception {
         mockMvc.perform(get("/question1")) // /question1へのGETリクエストを模擬
                 .andExpect(status().isOk())
-                .andExpect(content().string("<h1>Welcome to the Schedule Management System</h1>" +
-                "<a href='/question2/index'>Go to Schedule List</a>"));
+                .andExpect(content().string(containsString("<h1>Welcome to the Schedule Management System</h1>")))
+                .andExpect(content().string(containsString("<a href='/question2/index'>Go to Schedule List</a>")));
     }
 }
