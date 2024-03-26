@@ -35,3 +35,55 @@ tasks.named('test') {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+task q1test(type: Test) {
+    useJUnitPlatform {
+        includeTags  'Q1'
+    }
+}
+
+task q2test(type: Test) {
+    useJUnitPlatform {
+        includeTags  'Q2'
+    }
+}
+
+task q3test(type: Test) {
+    useJUnitPlatform {
+        includeTags  'Q3'
+    }
+}
+
+task q4test(type: Test) {
+    useJUnitPlatform {
+        includeTags  'Q4'
+    }
+}
+
+task q5test(type: Test) {
+    useJUnitPlatform {
+        includeTags  'Q5'
+    }
+}
+
+task q6test(type: Test) {
+    useJUnitPlatform {
+        includeTags  'Q6'
+    }
+}
+
+
+task testAll {
+    dependsOn q6test
+    dependsOn q5test
+    dependsOn q4test
+    dependsOn q3test
+    dependsOn q2test
+    dependsOn q1test
+
+    tasks.q2test.mustRunAfter q1test
+    tasks.q3test.mustRunAfter q2test
+    tasks.q4test.mustRunAfter q3test
+    tasks.q5test.mustRunAfter q4test
+    tasks.q6test.mustRunAfter q5test
+}
