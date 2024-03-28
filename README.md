@@ -1,33 +1,44 @@
 ## 試験を始める前に必ずやること!!
 以下の手順に沿って操作を行ってください。
 1. VSCodeで、プロジェクト直下にある`.github`フォルダの中の `/workflows/classroom.yml`というファイルを開く
-2. 1で開いたファイルの中身を以下の内容に丸ごと書き換える
-   1. ミスしないように必ず**コピペ**で書き換えること
+2. 1で開いたファイルの16行目の下に、以下内容を加える(具体的には `uses: actions/checkout@v4`と書かれているところの下です )
+   1. ミスしないように必ずコピペで書き換えること
+
 ```yml
-name: GitHub Classroom Workflow
+    - name: setup JDK21
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+```
 
-on:
-  - push
-  - workflow_dispatch
+上記の記述を書き加えた後のファイルの内容は以下のようになるので、書き加えた箇所に齟齬がないか（左側の半角スペースの数含めて）重点的に確認する
 
+```yml
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
 permissions:
   checks: write
   actions: read
   contents: read
-
 jobs:
-  build:
-    name: Autograding
+  run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '21'
-      - uses: education/autograding@v1
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: setup JDK21 # ここが書き加えた箇所
+      uses: actions/setup-java@v4 #ここが書き加えた箇所
+      with: #ここが書き加えた箇所
+        distribution: 'temurin' #ここが書き加えた箇所
+        java-version: '21' #ここが書き加えた箇所
+    # 以降の記述はデフォルトのままとすること（ここでは記述が長くなるので省略してますが、皆さんは省略しないでください）
 ```
+
 3. 書き換えが完了したらこのファイルを閉じる
    1. 以降このファイルは絶対に操作しないこと（何か誤操作があるとソースコードが動かなくなります）
 
