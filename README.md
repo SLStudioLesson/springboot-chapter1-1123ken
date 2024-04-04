@@ -49,6 +49,7 @@ jobs:
 このハンドラメソッドでは、return文で指定された文字列を直接表示するように設定してください。
 
 - ハンドラメソッドは `controller/HomeController` 内に、不足しているアノテーション等の記述を補完して作成してください。
+- 画面の表示は `http://localhost:8080/question1` へアクセスして表示するものとします。
 - `Welcome to the Schedule Management System` というテキストは **見出し1** とします。
 - `Go to Schedule List`というテキストのリンクが、`/question2/index`へ遷移するように設定してください。
 
@@ -56,8 +57,7 @@ jobs:
 
 `http://localhost:8080/question1` へアクセスし、以下の画像の通りの表示となることを確認してください。
 
-![springboot_chapter01test_01](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/b1fb7219-c3b3-4a31-8e41-9f88b44c7acb)
-
+![設問1-1.png](images/1-1.png)
 
 
 
@@ -66,6 +66,11 @@ jobs:
 簡易的なスケジュール管理リストを作成します。
 
 まず、スケジュールの一覧を表示する画面を作成します。
+
+以下のURL/HTTP通信方法でアクセスするとスケジュール一覧画面に遷移します。
+|URL|HTTP通信方法|
+|---|---|
+|`http://localhost:8080/question2/index`|GET|
 
 `resouces/templates` 直下の `index.html` ファイルを使用し、以下の指示に従って必要なクラスとハンドラメソッドを作成してください。
 
@@ -91,33 +96,51 @@ jobs:
 
 `http://localhost:8080/question2/index` へアクセスし、以下の画像の通りの出力となることを確認してください。
 
-![スクリーンショット 2024-02-20 134542](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/ff212af8-338e-449c-af56-18aa50ed7990)
+![設問2-1.png](images/2-1.png)
 
 
 
 ## 問題3.
 
-問題2で作成した一覧画面の **「detail」** ボタンをクリックすると、スケジュールの詳細を表示する画面に遷移します。
+問題2で作成した一覧画面の **「detail」** ボタンをクリックすると、以下の通信を行いスケジュールの詳細を表示する画面に遷移します。  
+|URL|HTTP通信方法|
+|---|---|
+|`http://localhost:8080/question2/detail/{id}`|GET|
+※ URLの`{id}`には、詳細を表示したいスケジュールの**ID**の値が入ります。
 
+`scheduleList` の要素の中から、URLの`{id}`に該当するIDの `Schedule` インスタンスを取得してビューへ渡します。
+  
 この機能を実装するために、`resouces/templates` 直下の `detail.html` ファイルを使用して、指定された表示に沿ったハンドラメソッドを`ScheduleController.java`に作成してください。
 
 `detail.html` を改変してはいけません。
 
 ### 動作確認
 
-ID:1の **「detail」** ボタンを押下し、`http://localhost:8080/question2/detail/1` へアクセスした時に以下の画像の通りの表示となることを確認してください。
+ID:1の **「detail」** ボタンを押下し、`http://localhost:8080/question2/detail/1` へアクセスした時に以下の画像の通り、**ID**が**1**のスケジュールの詳細が表示されることを確認してください。
 
-![スクリーンショット 2024-02-15 105335](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/4a46c997-4bde-452b-b0e3-c263a0a2b4c1)
+![設問3-1.png](images/3-1.png)
 
 ↓
 
-![スクリーンショット 2024-02-10 135033](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/fa098452-266e-4496-b544-b149b4091c22)
+![設問3-2.png](images/3-2.png)
 
 
 
 ## 問題4.
 
-問題2で作成した一覧画面の中央下部にある **「Search」** フォームを使用すると、ユーザーが入力したNameとLocationの文字列に部分一致するスケジュールを全て表示します。
+問題2で作成した一覧画面の中央下部にある **「Search」** フォームを使用すると、以下の通信先に入力フィールドに入力した値がクエリパラメーターとして送信されます。
+
+|URL|HTTP通信方法|
+|---|---|
+|`http://localhost:8080/question2/search`|GET|
+
+送信されたクエリパラメーターを基に、 `scheduleList` からスケジュールを抽出し、詳細情報を画面に表示します。  
+入力フィールドと抽出条件の説明は下表の通りです。  
+
+| 入力フィールド | 説明 |
+| --------- | ----------|
+| `Name` | - `Schedule` インスタンスの `name` に、入力した文字列を含む (部分一致) <br> - 空白の場合は条件を付与しない |
+| `Location` | - `Schedule` インスタンスの `location` に、入力した文字列を含む (部分一致) <br> - 空白の場合は条件を付与しない |
 
 この機能を実装するために、`resouces/templates` 直下の `result.html`ファイルを使用し、指定された表示に従って`ScheduleController.java`内に適切なハンドラメソッドを作成してください。
 
@@ -129,31 +152,47 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 ### 動作確認1
 
-以下画像通りのの入力後 **「search」** ボタンを押下し、`http://localhost:8080/question2/search?name=Dinner&location=Kichijoji` へアクセスした時に以下の画像の通りの表示となることを確認してください。
+以下画像通りに入力フォームに入力後 **「search」** ボタンを押下します。  
 
-![スクリーンショット 2024-02-10 141318](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/499a98c8-5387-46b0-a441-a1784654f2a3)
 
-↓
+![設問4-1.png](images/4-1.png)
 
-![スクリーンショット 2024-02-20 140602](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/73151880-26f0-47de-a809-09a26ab8e22a)
+↓  
+  
+`http://localhost:8080/question2/search?name=Dinner&location=Kichijoji`に遷移され、以下の画像の通り、IDが**3**のスケジュールが表示されることを確認してください。
+![設問4-2.png](images/4-2.png)
 
 
 ### 動作確認2
 
-ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?name=Lu`」** 入力後、以下の画像の通りの表示となることを確認してください。
-![スクリーンショット 2024-03-26 165508](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/105701916/fda1d35c-125c-430b-8c5a-deb61b76c29f)
+ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?name=Lu`」** を直接入力してアクセスを試みると、以下の画像の通りIDが**1**のスケジュールが表示されることを確認してください。
+![設問4-3.png](images/4-3.png)
 
 
 ### 動作確認3
 
-ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?location=Shi`」** 入力後、以下の画像の通りの表示となることを確認してください。
-![スクリーンショット 2024-03-26 173744](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/105701916/5da16779-54ca-4102-9905-c0aa8c44dcf6)
+ブラウザのアドレスバーに **「`http://localhost:8080/question2/search?location=Shi`」** を直接入力してアクセスを試みると、以下の画像の通りIDが**1**と**2**のスケジュールが表示されることを確認してください。
+![設問4-4.png](images/4-4.png)
 
 
 
 ## 問題5.
 
-問題2で作成した一覧画面の最下部にある **「Click here to register」** リンクをクリックすると、新規スケジュール登録画面に遷移します。
+問題2で作成した一覧画面の最下部にある **「Click here to register」** リンクをクリックすると、以下の通信を行い新規スケジュール登録画面に遷移します。
+|URL|HTTP通信方法|
+|---|---|
+|`http://localhost:8080/question2/register`|GET|
+
+
+入力フィールドに対応する`ScheduleForm`インスタンスのフィールドは下表の通りです。
+| 入力フィールド | インスタンスのフィールド |
+|-----|-----|
+| ID | id |
+| Name | name |
+| Start Date time | startDateTime |
+| Duration  | duration |
+| Location | location |
+
 
 この機能を実装するために、`resouces/templates` 直下の `register.html`ファイルを使用し、以下の指示に従って必要なDTO(Data Transfer Object)クラスとハンドラメソッドを作成してください。
 
@@ -164,16 +203,25 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 ### 動作確認
 
-**「Click here to register」** リンクをクリック し、 `http://localhost:8080/question2/register` へアクセスした時に以下の画像の通りの表示となることを確認してください。
+**「Click here to register」** リンクをクリックし、 `http://localhost:8080/question2/register` へアクセスした時に以下の画像の通りの表示となることを確認してください。
 
-![スクリーンショット 2024-02-10 142854](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/9ef16dab-13b1-48dc-b64d-71011b8ae05e)
+![設問5-1.png](images/5-1.png)
 
 
 
 
 ## 問題6.
 
-問題5で作成した登録画面から全ての入力必須項目を入力し、 **「Register」** ボタンをクリックすると、データが正常に登録された場合には以下の登録成功画面に遷移します。
+問題5で作成した登録画面から全ての入力必須項目を入力後 **「Register」** ボタンをクリックすると、以下の通信を行いデータが正常に登録された場合には登録成功画面に遷移します。  
+|URL|HTTP通信方法|
+|---|---|
+|`http://localhost:8080/question2/add`|POST|
+
+
+データ登録時、受け取った`ScheduleForm`インスタンスのフィールドは、`Schedule`インスタンスの同名のフィールドにマッピングされます。  
+その後、マッピングされた `Schedule`インスタンスは `scheduleList` に追加されます。
+
+また登録成功画面には、 `scheduleList` に追加された`Schedule`インスタンスの詳細が表示されます。
 
 この挙動を実装するために、`resouces/templates` 直下の `success.html`ファイルを用いて、以下の指示に沿ったハンドラメソッドを作成してください。
 
@@ -185,9 +233,18 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 ### 動作確認
 
-全ての必須項目を入力後 **「Register」** ボタンをクリックすると、`http://localhost:8080/question2/add`へアクセスし以下の画像の通りの表示となることを確認してください。
+新規スケジュール登録画面にて下表の通り入力後 **「Register」** ボタンをクリックすると、`http://localhost:8080/question2/add`へアクセスし以下の画像の通りの表示となることを確認してください。
+| 入力フィールド | 値 |
+|--------------|---|
+| ID | 4 |
+| Name | Study |
+| Start Date time |2019/01/23 10:00|
+| Duration | 6 |
+| Location | Akasaka |
 
-また登録成功後、画面下部にあるリンクから一覧画面に戻り、項目を入力したスケジュールがテーブルに正常に追加されていることを確認してください。
+![設問6-1.png](images/6-1.png)
 
-![スクリーンショット 2024-02-10 143907](https://github.com/SLStudioLesson/SpringBootChapter1assessment/assets/98870955/772cfd53-e373-45fb-acbe-2bec4e872d1d)
+また登録成功後、画面下部にあるリンクから一覧画面に戻り、以下の画像の通り登録したスケジュールがテーブルに正常に追加されていることを確認してください。
+
+![設問6-2.png](images/6-2.png)
 
