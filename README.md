@@ -87,9 +87,30 @@ jobs:
 
 `resouces/templates` 直下の `index.html` ファイルを使用し、以下の指示に従って必要なクラスとハンドラメソッドを作成してください。
 
-1. 必要なクラスの修正: `com.example.chapter01test（プロジェクト名）` パッケージ内にある`Schedule`クラスを修正してください。
-フィールド名や型は、`index.html`を参照して推測し、追加してください。
-コンストラクタ、アクセサも追加してください。
+1. 必要なクラスの修正: `com.example.chapter01test（プロジェクト名）` パッケージ内にある`Schedule`クラスを以下の仕様の通りに修正してください。
+    | フィールド名 | 型 | 説明 |
+    | ----------- | -- | ---- |
+    | `id` | `int` | スケジュールのID |
+    | `name` | `String` | スケジュールのタスク名 |
+    | `startDateTime` | `LocalDateTime` | スケジュールの開始日時 |
+    | `duration` | `double` | スケジュールの所要時間 |
+    | `location` | `String` | スケジュールの場所 |
+
+    | メソッド名 | 戻り値の型 | 引数 | 説明 |
+    | ---------- | -------- | ---- | ---- |
+    | コンストラクタ |  | `int id,` <br> `String name,` <br> `LocalDateTime startDateTime,` <br> `double duration,` <br> `String location` | フィールドを初期化 |
+    | `getId` | `int` | なし | `id` フィールドの値を返す |
+    | `getName` | `String` | なし | `name` フィールドの値を返す |
+    | `getStartDateTime` | `LocalDateTime` | なし | `startDateTime` フィールドの値を返す |
+    | `getDuration` | `double` | なし | `duration` フィールドの値を返す |
+    | `getLocation` | `String` | なし | `location` フィールドの値を返す |
+    | `setId` | `void` | `int id` | `id` フィールドに引数 `id` を代入 |
+    | `setName` | `void` | `String name` | `name` フィールドに引数 `name` を代入 |
+    | `setStartDateTime` | `void` | `LocalDateTime startDateTime` | `startDateTime` フィールドに引数 `startDateTime` を代入 |
+    | `setDuration` | `void` | `double duration` | `duration` フィールドに引数 `duration` を代入 |
+    | `setLocation` | `void` | `String location` | `location` フィールドに引数 `location` を代入 |
+
+
 2. フィールドの定義:`controller`パッケージ内の`ScheduleController.java` には、すでにフィールドとして `Schedule` インスタンスを格納する空のArrayList `scheduleList` が宣言されています。
 この`scheduleList` の初期値に、以下のインスタンスを格納するように修正してください。
 
@@ -203,7 +224,29 @@ NameとLocationはそれぞれ入力は**必須ではありません** 。
 
 この機能を実装するために、`resouces/templates` 直下の `register.html`ファイルを使用し、以下の指示に従って必要なDTO(Data Transfer Object)クラスとハンドラメソッドを作成してください。
 
-- 必要なDTOクラスは、`com.example.chapter01test(プロジェクト名).dto` パッケージ内の`ScheduleForm` クラスを修正してください。
+- 必要なDTOクラスは、`com.example.chapter01test(プロジェクト名).dto` パッケージ内の`ScheduleForm` クラスを以下の仕様の通りに修正してください。
+    | フィールド名 | 型 | 説明 |
+    | ----------- | -- | ---- |
+    | `id` | `int` | スケジュールのID |
+    | `name` | `String` | スケジュールのタスク名 |
+    | `startDateTime` | `LocalDateTime` | スケジュールの開始日時 |
+    | `duration` | `double` | スケジュールの所要時間 |
+    | `location` | `String` | スケジュールの場所 |
+
+    | メソッド名 | 戻り値の型 | 引数 | 説明 |
+    | ---------- | -------- | ---- | ---- |
+    | `getId` | `int` | なし | `id` フィールドの値を返す |
+    | `getName` | `String` | なし | `name` フィールドの値を返す |
+    | `getStartDateTime` | `LocalDateTime` | なし | `startDateTime` フィールドの値を返す |
+    | `getDuration` | `double` | なし | `duration` フィールドの値を返す |
+    | `getLocation` | `String` | なし | `location` フィールドの値を返す |
+    | `setId` | `void` | `int id` | `id` フィールドに引数 `id` を代入 |
+    | `setName` | `void` | `String name` | `name` フィールドに引数 `name` を代入 |
+    | `setStartDateTime` | `void` | `LocalDateTime startDateTime` | `startDateTime` フィールドに引数 `startDateTime` を代入 |
+    | `setDuration` | `void` | `double duration` | `duration` フィールドに引数 `duration` を代入 |
+    | `setLocation` | `void` | `String location` | `location` フィールドに引数 `location` を代入 |
+
+
 - ハンドラメソッドは`ScheduleController.java`に作成してください。
 
 ### 動作確認
