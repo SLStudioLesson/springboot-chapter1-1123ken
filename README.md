@@ -62,12 +62,14 @@ jobs:
 
 以下の要件に従って、特定の画面を表示する機能を持つハンドラメソッドを作成してください。
 
-このハンドラメソッドでは、return文で指定された文字列を直接表示するように設定してください。
 
-- ハンドラメソッドは `controller/HomeController` 内に、不足しているアノテーション等の記述を補完して作成してください。
-- 画面の表示は `http://localhost:8080/question1` へアクセスして表示するものとします。
-- `Welcome to the Schedule Management System` というテキストは **見出し1** とします。
-- `Go to Schedule List`というテキストのリンクが、`/question2/index`へ遷移するように設定してください。
+- ハンドラメソッドは `controller/HomeController` 内に、不足しているアノテーション等の記述を補完して作成します。
+- `http://localhost:8080/question1` にアクセスすると、以下の文字列を返却します。
+    ```java
+    "<h1>Welcome to the Schedule Management System</h1>" +
+        "<a href='/question2/index'>Go to Schedule List</a>"
+    ```
+- ハンドラメソッドの戻り値はHTMLとしてブラウザに解釈されて表示します。
 
 ### 動作確認
 
