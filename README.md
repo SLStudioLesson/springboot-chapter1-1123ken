@@ -140,6 +140,7 @@ jobs:
 |URL|HTTP通信方法|
 |---|---|
 |`http://localhost:8080/question2/detail/{id}`|GET|
+
 ※ URLの`{id}`には、詳細を表示したいスケジュールの**ID**の値が入ります。
 
 `scheduleList` の要素の中から、URLの`{id}`に該当するIDの `Schedule` インスタンスを取得してビューへ渡します。
